@@ -1,0 +1,30 @@
+---
+driver:
+  name: dokken
+  chef_version: latest
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+
+verifier:
+  name: inspec
+
+platforms:
+- name: centos-7
+  driver:
+    image: dokken/centos-7
+
+suites:
+  - name: allow
+    provisioner:
+      policyfile: policyfiles/test_allow_net_connect.rb
+  - name: register_stub
+    provisioner:
+      policyfile: policyfiles/test_register_stub.rb
+    verifier:
+      inspec_tests:
+        - path: ./test/integration/default/register_stub.rb
+

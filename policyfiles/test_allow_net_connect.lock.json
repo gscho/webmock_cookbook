@@ -1,0 +1,63 @@
+{
+  "revision_id": "9c3c657966fbd0ecf7c2b0d4434669f040e67acf511478490efe8720e7a08148",
+  "name": "test_allow_net_connect",
+  "run_list": [
+    "recipe[test_webmock::allow_net_connect]"
+  ],
+  "included_policy_locks": [
+
+  ],
+  "cookbook_locks": {
+    "test_webmock": {
+      "version": "1.0.0",
+      "identifier": "a7232df94be3b87f10d76fde36973277b6229a25",
+      "dotted_decimal_identifier": "47045001473680312.35765839523100311.55489738218021",
+      "source": "../test/cookbooks/test_webmock",
+      "cache_key": null,
+      "scm_info": null,
+      "source_options": {
+        "path": "../test/cookbooks/test_webmock"
+      }
+    },
+    "webmock": {
+      "version": "0.1.0",
+      "identifier": "2f648536e0f2d479aff04febf9dc212b9a89edd1",
+      "dotted_decimal_identifier": "13339847219540692.34251918849866204.36471160040913",
+      "source": "..",
+      "cache_key": null,
+      "scm_info": null,
+      "source_options": {
+        "path": ".."
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "test_webmock",
+        ">= 0.0.0"
+      ],
+      [
+        "webmock",
+        ">= 0.0.0"
+      ]
+    ],
+    "dependencies": {
+      "test_webmock (1.0.0)": [
+        [
+          "webmock",
+          ">= 0.0.0"
+        ]
+      ],
+      "webmock (0.1.0)": [
+
+      ]
+    }
+  }
+}
