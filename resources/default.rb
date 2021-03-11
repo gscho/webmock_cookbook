@@ -10,8 +10,8 @@ end
 action_class do
 
   def enable!
-    load_gem 'rexml', 'rexml/rexml'
-    load_gem 'webmock'
+    load_gem 'rexml', '~> 3.2', 'rexml/rexml'
+    load_gem 'webmock', '~> 3.12'
     self.class.include WebMock::API
 
     WebMock.enable!
@@ -33,13 +33,14 @@ action_class do
     instance_eval(&block)
   end
 
-  def load_gem(name, require_path = name)
+  def load_gem(name, gem_version, require_path = name)
     gem name
     require name
   rescue LoadError
     Chef::Log.info("Gem #{name} not installed. Installing now")
     chef_gem name do
       compile_time true
+      version gem_version
     end
 
     require require_path
