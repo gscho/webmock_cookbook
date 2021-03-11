@@ -4,7 +4,12 @@ This cookbook will enable the `webmock` resource in any cookbooks that depend on
 
 ## What can you do with this cookbook?
 
-This cookbook is a simple wrapper around the [webmock](https://github.com/bblimke/webmock) gem. This gem allows you to mock any HTTP request and return a value for test purposes. Doing so allows you to decouple 3rd party dependencies from testing the logic of your cookbook.
+This cookbook is a simple wrapper around the [webmock](https://github.com/bblimke/webmock) gem. This gem allows you to mock any HTTP request and return a value for test purposes. Doing so allows you to decouple external HTTP services from testing the logic of your cookbook.
+
+Use cases:
+
+- testing a chef library helper that makes HTTP requests to an external service
+- mocking responses from services that are not accessible locally
 
 This cookbooks just gives you convenient access to the `webmock` gem. All `webmock` APIs are documented here: https://github.com/bblimke/webmock
 
@@ -15,7 +20,7 @@ This resource is meant for testing. That means you should only call these resour
 ```
 # A webmock resource enables mocking of http requests from within a recipe
 
-webmock 'mock this' do
+webmock 'registering a stub' do
   block               block
   allow_net_connect   true, false
   allow_localhost     true, false
